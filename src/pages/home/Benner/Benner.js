@@ -16,7 +16,7 @@ const Benner = () => {
                 <div>
                     <h1 class="text-5xl font-bold capitalize">Your new smile starts here</h1>
                     <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button class="btn bg-gradient-to-l hover:bg-gradient-to-r from-[#19D3AE] to-[#0FCFEC] text-white border-0">Get Started</button>
+                    <button class="btn bg-gradient-to-l hover:bg-gradient-to-r from-secondary to-primary text-white border-0">Get Started</button>
                 </div>
             </div>
         </div>
