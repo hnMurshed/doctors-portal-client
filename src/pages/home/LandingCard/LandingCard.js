@@ -1,8 +1,11 @@
 import React from 'react';
 
-const LandingCard = ({children}) => {
+const LandingCard = ({img, bgStyle, children}) => {
     return (
-        <div className='flex items-start py-[52px] px-[30px] bg-gradient-to-l from-primary to-secondary text-white rounded-lg'>
+        <div className={`flex items-start py-[52px] px-[30px] text-white rounded-lg ${bgStyle}`}>
+            <div className="mr-5">
+                <img src={img} alt="" />
+            </div>
             {children}
         </div>
     );

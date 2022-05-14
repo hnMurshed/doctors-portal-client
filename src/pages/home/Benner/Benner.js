@@ -10,13 +10,13 @@ const bennerRootDivStyle = {
 
 const Benner = () => {
     return (
-        <div class="hero min-h-screen" style={bennerRootDivStyle}>
-            <div class="hero-content flex-col lg:flex-row-reverse gap-12 custom-container">
-                <img src={chairImg} class="max-w-lg rounded-lg shadow-2xl" alt=''/>
+        <div className="hero min-h-screen" style={bennerRootDivStyle}>
+            <div className="hero-content flex-col lg:flex-row-reverse gap-12 custom-container">
+                <img src={chairImg} className="max-w-lg rounded-lg shadow-2xl" alt=''/>
                 <div>
-                    <h1 class="text-5xl font-bold capitalize">Your new smile starts here</h1>
-                    <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button class="btn bg-gradient-to-l hover:bg-gradient-to-r from-secondary to-primary text-white border-0">Get Started</button>
+                    <h1 className="text-5xl font-bold capitalize">Your new smile starts here</h1>
+                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <button className="btn bg-gradient-to-l hover:bg-gradient-to-r from-secondary to-primary text-white border-0">Get Started</button>
                 </div>
             </div>
         </div>
