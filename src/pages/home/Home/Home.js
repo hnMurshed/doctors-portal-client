@@ -1,9 +1,10 @@
 import React from 'react';
+import Benner from '../Benner/Benner';
 
 const Home = () => {
     return (
         <div>
-            <h2>Welcome to Doctor Portal</h2>
+            <Benner></Benner>
         </div>
     );
 };

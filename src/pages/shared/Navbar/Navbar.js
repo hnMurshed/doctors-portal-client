@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <div class="navbar bg-base-100">
+        <div class="navbar justify-between custom-container">
             <div class="navbar-start">
                 <div class="dropdown">
                     <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -29,9 +29,6 @@ const Navbar = () => {
                     <li><Link to='/contact'>Contact Us</Link></li>
                     <li><Link to='/login'>Login</Link></li>
                 </ul>
-            </div>
-            <div class="navbar-end">
-                <a class="btn">Get started</a>
             </div>
         </div>
     );
