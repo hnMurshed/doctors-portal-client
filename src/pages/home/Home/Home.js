@@ -4,6 +4,7 @@ import Benner from '../Benner/Benner';
 import Exceptional from '../Exceptional/Exceptional';
 import Landing from '../Landing/Landing';
 import Services from '../Services/Services';
+import Testimonials from '../Testimonials/Testimonials';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <Services></Services>
             <Exceptional></Exceptional>
             <Appointment></Appointment>
+            <Testimonials></Testimonials>
         </div>
     );
 };
