@@ -22,11 +22,11 @@ const Services = () => {
             _id: 3,
             img: whitening,
             name: 'Teeth Whitening',
-            description: 'Teeth Whitening can effectively make teeth white and bright, give you glowing smile. Enjoy the boost in confidence of a bright, white smile.'
+            description: 'Teeth Whitening can effectively make teeth white and bright, give you glowing smile.'
         },
     ]
     return (
-        <div className='py-[140px] px-5'>
+        <div className='py-20 lg:py-[120px] px-5'>
             <h5 className='text-center uppercase text-secondary text-[20px] font-bold'>Our Services</h5>
             <h3 className='text-center capitalize text-accent text-[36px] mb-16'>Services we provide</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
