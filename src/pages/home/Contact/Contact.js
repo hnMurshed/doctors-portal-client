@@ -4,7 +4,7 @@ import contactBg from '../../../assets/images/appointment.png';
 
 const contactStyle = {
     background: `url('${contactBg}')`,
-    backgroundPosition: 'cover',
+    backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
 }
 

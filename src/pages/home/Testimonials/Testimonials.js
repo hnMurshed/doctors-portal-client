@@ -9,23 +9,23 @@ import quote from '../../../assets/icons/quote.svg';
 const testimonialsData = [
     {
         _id: 1,
-        description: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content',
+        comment: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content',
         name: 'Winson Herry',
-        address: 'New York',
+        location: 'New York',
         img: people1
     },
     {
         _id: 3,
-        description: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content',
+        comment: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content',
         name: 'Jefrin Maria',
-        address: 'California',
+        location: 'California',
         img: people2
     },
     {
         _id: 3,
-        description: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content',
+        comment: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content',
         name: 'Leo Zoe',
-        address: 'Washington',
+        location: 'Washington',
         img: people3
     },
 ]
@@ -38,13 +38,13 @@ const Testimonials = () => {
                     <h5 className='text-start capitalize text-secondary text-[20px] font-bold mb-2'>Appoinment</h5>
                     <h1 className="text-[36px] capitalize">Exceptional Dental Care, on Your Terms</h1>
                 </div>
-                <img src={quote} alt="Quote" className='w-[192px]' />
+                <img src={quote} alt="Quote" className='w-[98px] lg:w-[192px]' />
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 mt-20'>
                 {
-                    testimonialsData.map(testimonial => <Testimonial
-                        key={testimonial._id}
-                        testimonial={testimonial}
+                    testimonialsData.map(review => <Testimonial
+                        key={review._id}
+                        review={review}
                     ></Testimonial>)
                 }
             </div>

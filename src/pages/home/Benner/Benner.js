@@ -5,7 +5,7 @@ import ButtonPrimarySecondary from '../../shared/ButtonPrimarySecondary/ButtonPr
 
 const bennerRootDivStyle = {
     backgroundImage: `url('${bennerBg}')`,
-    backgroundPosition: 'cover',
+    backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat'
 }
 

@@ -5,7 +5,7 @@ import bg from '../../../assets/images/appointment.png';
 
 const appoinmentStyle = {
     backgroundImage: `url('${bg}')`,
-    backgroundPosition: 'cover',
+    backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat'
 }
 

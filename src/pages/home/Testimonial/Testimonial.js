@@ -1,15 +1,19 @@
 import React from 'react';
 
-const Testimonial = ({testimonial}) => {
-    const { name, address, img, description } = testimonial;
+const Testimonial = ({ review }) => {
+    const { name, location, img, comment } = review;
     return (
         <div className='p-8 rounded-lg shadow-xl'>
-            <p>{description}</p>
+            <p>{comment}</p>
             <div className='flex items-center mt-9'>
-                <img src={img} alt={name} />
+                <div class="avatar">
+                    <div class="w-[75px] rounded-full ring ring-primary ring-offset-base-100 mr-5">
+                        <img src={img} alt={name} />
+                    </div>
+                </div>
                 <div className='ml-2 text-accent'>
                     <h5 className='text-[20px font-b] font-semibold'>{name}</h5>
-                    <span>{address}</span>
+                    <span>{location}</span>
                 </div>
             </div>
         </div>
