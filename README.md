@@ -1,3 +1,13 @@
+# Doctors Portal
+
+# What I have used for this project
+
+* React router
+* Tailwind css
+* Tailwind component Daisy Ui
+* React Form Hook
+* React Day Picker
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
