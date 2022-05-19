@@ -5,13 +5,13 @@ import BookingModal from '../BookingModal/BookingModal';
 
 const AvailableAppointments = ({ date }) => {
     const [services, setServices] = useState([]);
-    const [selectedService, setSelectedService] = useState(null)
+    const [selectedService, setSelectedService] = useState(null);
 
     useEffect(() => {
-        fetch('services.json')
+        fetch('http://localhost:5000/services')
             .then(res => res.json())
             .then(data => setServices(data))
-    }, [])
+    }, []);
     return (
         <section className='px-12 pt-4 pb-36'>
             <h4 className='text-[22px] capitalize text-secondary text-center mb-24'>Available Appointments on {format(date, 'PP')}: {services.length}</h4>

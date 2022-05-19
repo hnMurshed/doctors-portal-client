@@ -7,6 +7,10 @@
 * Tailwind component Daisy Ui
 * React Form Hook
 * React Day Picker
+* Mongodb database
+* Node js server
+* Firebase authentication
+* React firebase hooks
 
 # Getting Started with Create React App
 

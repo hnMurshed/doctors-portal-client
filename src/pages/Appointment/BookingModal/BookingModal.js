@@ -2,8 +2,12 @@ import React from 'react';
 import { format } from 'date-fns';
 import { useForm } from 'react-hook-form';
 import { FaTimes } from 'react-icons/fa';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.config';
 
 const BookingModal = ({ selectedService, setSelectedService, date }) => {
+    const [user] = useAuthState(auth);
+
     const {_id, name, slots} = selectedService;
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
@@ -20,15 +24,15 @@ const BookingModal = ({ selectedService, setSelectedService, date }) => {
                         <label htmlFor="booking-modal" className="bg-accent text-[#8391AD] p-1 rounded-full cursor-pointer"><FaTimes></FaTimes></label>
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <input className='w-full bg-[#CFCFCF] border my-2 p-3 rounded-md' type='text' value={format(date, 'PP')} placeholder='Appointment Date' {...register("date")} readOnly/>
+                        <input disabled className='w-full border my-2 p-3 rounded-md' type='text' value={format(date, 'PP')} {...register("date")} />
                         <select className='select w-full bg-[#CFCFCF] border my-2 p-3 rounded-md' {...register("schedule")}>
                             {
-                                slots.map(slot => <option value={slot} selected>{slot}</option>)
+                                slots.map((slot, index) => <option key={index} value={slot} defaultValue>{slot}</option>)
                             }
                         </select>
-                        <input className='w-full border my-2 p-3 rounded-md' type='text' placeholder='Full Name' {...register("name")} required/>
+                        <input disabled value={user?.displayName || ''} className='w-full border my-2 p-3 rounded-md' type='text' {...register("name")} required/>
+                        <input disabled value={user?.email || ''} className='w-full border my-2 p-3 rounded-md' type='email' placeholder='Email' {...register("email")} required/>
                         <input className='w-full border my-2 p-3 rounded-md' type='text' placeholder='Phone Number' {...register("phone")} required/>
-                        <input className='w-full border my-2 p-3 rounded-md' type='email' placeholder='Email' {...register("email")} required/>
                         <input className='w-full bg-accent text-white my-2 p-3 rounded-md cursor-pointer' type="submit" value='Submit' />
                     </form>
                 </div>

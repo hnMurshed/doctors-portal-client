@@ -1,5 +1,4 @@
 import React from 'react';
-import ButtonPrimarySecondary from '../../shared/ButtonPrimarySecondary/ButtonPrimarySecondary';
 
 const ServiceAppointment = ({ service, setSelectedService }) => {
     const { name, slots } = service;
