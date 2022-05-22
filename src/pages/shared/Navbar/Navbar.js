@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import {signOut} from 'firebase/auth';
+import { signOut } from 'firebase/auth';
 import auth from '../../../firebase.config';
 
 const Navbar = () => {
@@ -13,14 +13,12 @@ const Navbar = () => {
         <li><Link to='/appointment'>Appointment</Link></li>
         <li><Link to='/reviews'>Reviews</Link></li>
         <li><Link to='/contact'>Contact Us</Link></li>
-        <li>
-            {
-                user ? <button onClick={() => signOut(auth)} className="btn btn-ghost">Sign Out</button> : <Link to='/login'>Login</Link>
-            }
-        </li>
+        {
+            user && <li><Link to='/dashboard'>Dashboard</Link></li>
+        }
     </>
     return (
-        <div className="navbar justify-between custom-container sticky top-0 z-10 bg-white">
+        <div className="navbar justify-between sticky top-0 z-10 bg-white px-[5%]">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -36,6 +34,14 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal p-0">
                     {navItems}
                 </ul>
+            </div>
+            <div className="navbar-end">
+                <label tabIndex="1" for="dashboard-sidemenu" className="btn btn-ghost drawer-button lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </label>
+                {
+                    user ? <button onClick={() => signOut(auth)} className="btn btn-ghost">Sign Out</button> : <Link className='btn btn-ghost' to='/login'>Login</Link>
+                }
             </div>
         </div>
     );

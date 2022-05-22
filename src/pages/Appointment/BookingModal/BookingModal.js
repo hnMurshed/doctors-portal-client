@@ -4,15 +4,47 @@ import { useForm } from 'react-hook-form';
 import { FaTimes } from 'react-icons/fa';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.config';
+import { toast } from 'react-toastify';
 
-const BookingModal = ({ selectedService, setSelectedService, date }) => {
+const BookingModal = ({ selectedService, setSelectedService, date, refetch }) => {
     const [user] = useAuthState(auth);
 
     const {_id, name, slots} = selectedService;
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => {
+
+    const appointmentDate = format(date, 'PP');
+    const onSubmit = (data, event) => {
+        const slot = event.target.schedule.value;
         console.log(data);
-        setSelectedService(null);
+        const bookingData = {
+            treatmentId: _id,
+            treatment: name,
+            appointmentDate,
+            slot,
+            patient: user.displayName,
+            patientEmail: user.email,
+            phone: event.target.phone.value
+        }
+
+        fetch('http://localhost:5000/bookings', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(bookingData)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.success) {
+                toast(`Your appointment is confired on ${appointmentDate} at ${slot}`);
+                refetch();
+                setSelectedService(null);
+            }
+            else {
+                toast.error(`You have already an appointment for ${name} on ${appointmentDate}`)
+            }
+        });
     };
     return (
         <div>
@@ -24,14 +56,14 @@ const BookingModal = ({ selectedService, setSelectedService, date }) => {
                         <label htmlFor="booking-modal" className="bg-accent text-[#8391AD] p-1 rounded-full cursor-pointer"><FaTimes></FaTimes></label>
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <input disabled className='w-full border my-2 p-3 rounded-md' type='text' value={format(date, 'PP')} {...register("date")} />
+                        <input className='w-full border my-2 p-3 rounded-md' type='text' value={appointmentDate} {...register("date")} />
                         <select className='select w-full bg-[#CFCFCF] border my-2 p-3 rounded-md' {...register("schedule")}>
                             {
                                 slots.map((slot, index) => <option key={index} value={slot} defaultValue>{slot}</option>)
                             }
                         </select>
                         <input disabled value={user?.displayName || ''} className='w-full border my-2 p-3 rounded-md' type='text' {...register("name")} required/>
-                        <input disabled value={user?.email || ''} className='w-full border my-2 p-3 rounded-md' type='email' placeholder='Email' {...register("email")} required/>
+                        <input disabled value={user?.email || ''} className='w-full border my-2 p-3 rounded-md' type='email' {...register("email")} required/>
                         <input className='w-full border my-2 p-3 rounded-md' type='text' placeholder='Phone Number' {...register("phone")} required/>
                         <input className='w-full bg-accent text-white my-2 p-3 rounded-md cursor-pointer' type="submit" value='Submit' />
                     </form>

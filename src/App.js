@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import About from './pages/About/About';
 import Appointment from './pages/Appointment/Appointment';
 import Contact from './pages/Contact/Contact';
@@ -9,9 +11,12 @@ import NotFound from './pages/NotFound/NotFound';
 import Reviews from './pages/Reviews/Reviews';
 import Footer from './pages/shared/Footer/Footer';
 import Navbar from './pages/shared/Navbar/Navbar';
-import {Toaster} from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import Register from './pages/Login/Register/Register';
 import RequireAuth from './pages/shared/RequireAuth/RequireAuth';
+import Dashboard from './pages/Dashboard/Dashboard';
+import MyAppointment from './pages/Dashboard/MyAppointment';
+import MyReview from './pages/Dashboard/MyReview';
 
 function App() {
   return (
@@ -28,12 +33,21 @@ function App() {
             <Appointment></Appointment>
           </RequireAuth>
         }></Route>
+        <Route path='dashboard' element={
+          <RequireAuth>
+            <Dashboard></Dashboard>
+          </RequireAuth>
+        }>
+          <Route index element={<MyAppointment />}></Route>
+          <Route path='myreview' element={<MyReview />}></Route>
+        </Route>
         <Route path='reviews' element={<Reviews></Reviews>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='register' element={<Register></Register>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }

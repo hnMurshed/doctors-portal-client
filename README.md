@@ -11,6 +11,8 @@
 * Node js server
 * Firebase authentication
 * React firebase hooks
+* React toastify 
+* React query
 
 # Getting Started with Create React App
 
