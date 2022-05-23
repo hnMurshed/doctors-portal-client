@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.config';
 import Loading from '../../shared/Loading/Loading';
+import useToken from '../../../hooks/useToken';
 
 const Register = () => {
 
@@ -36,16 +37,19 @@ const Register = () => {
         updateError
     ] = useUpdateProfile(auth);
 
+    // use custom hooks
+    const [token] = useToken(emailUser || googleUser);
+
     let errorElement;
 
     if (googleError || emailError) {
         errorElement = <p className='text-red-400 mb-3'>{googleError?.message || emailError?.message}</p>;
     }
     useEffect( () => {
-        if (googleUser || emailUser) {
+        if (token) {
             navigate('/home');
         }
-    }, [googleUser, emailUser])
+    }, [token, navigate]);
     
     if (googleLoading || emailLoading) {
         return <Loading></Loading>

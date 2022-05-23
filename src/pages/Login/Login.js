@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast'
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../shared/Loading/Loading';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const [userEmail, setUserEmail] = useState('');
@@ -35,12 +36,14 @@ const Login = () => {
         passResetError
     ] = useSendPasswordResetEmail(auth);
 
+    // use custom hooks
+    const [token] = useToken(googleUser || emailUser);
     
     useEffect( () => {
-        if (googleUser || emailUser) {
+        if (token) {
             navigate(from, {replace: true});
         }
-    }, [googleUser, emailUser, from, navigate]);
+    }, [token, from, navigate]);
 
     let errorElement;
 
