@@ -11,14 +11,14 @@ const AvailableAppointments = ({ date }) => {
 
     const appointmentDate = format(date, 'PP');
 
-    const {data: services, isLoading, refetch} = useQuery(['available', appointmentDate], () => fetch(`http://localhost:5000/available?appointmentDate=${appointmentDate}`).then(res => res.json()));
+    const {data: services, isLoading, refetch} = useQuery(['available', appointmentDate], () => fetch(`https://desolate-cliffs-76740.herokuapp.com/available?appointmentDate=${appointmentDate}`).then(res => res.json()));
 
     if (isLoading) {
         return <Loading></Loading>
     }
 
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/available?appointmentDate=${appointmentDate}`)
+    //     fetch(`https://desolate-cliffs-76740.herokuapp.com/available?appointmentDate=${appointmentDate}`)
     //         .then(res => res.json())
     //         .then(data => setServices(data))
     // }, [appointmentDate]);

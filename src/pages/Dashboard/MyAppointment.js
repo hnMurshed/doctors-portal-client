@@ -15,7 +15,7 @@ const MyAppointment = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/bookings?patient=${user.email}`, {
+            fetch(`https://desolate-cliffs-76740.herokuapp.com/bookings?patient=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('ACCESS_TOKEN')}`

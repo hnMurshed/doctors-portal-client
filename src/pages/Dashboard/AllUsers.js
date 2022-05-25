@@ -9,14 +9,14 @@ const AllUsers = () => {
     const [users, setUsers] = useState([]);
 
     useEffect( () => {
-        fetch('http://localhost:5000/users')
+        fetch('https://desolate-cliffs-76740.herokuapp.com/users')
         .then(res => res.json())
         .then(data => setUsers(data))
     }, []);
     **********************/
 
     // use react query to fetch data instead of fetching inside useEffect and using useState
-    const {data: users, isLoading, refetch} = useQuery('users', () => fetch('http://localhost:5000/users', {
+    const {data: users, isLoading, refetch} = useQuery('users', () => fetch('https://desolate-cliffs-76740.herokuapp.com/users', {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('ACCESS_TOKEN')}`
@@ -28,7 +28,7 @@ const AllUsers = () => {
     };
 
     const makeAdmin = (user, isAdmin) => {
-        fetch('http://localhost:5000/control-role', {
+        fetch('https://desolate-cliffs-76740.herokuapp.com/control-role', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

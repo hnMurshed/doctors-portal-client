@@ -26,7 +26,7 @@ const BookingModal = ({ selectedService, setSelectedService, date, refetch }) =>
             phone: event.target.phone.value
         }
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://desolate-cliffs-76740.herokuapp.com/bookings', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
