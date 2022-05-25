@@ -10,7 +10,7 @@ const AddDoctor = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     // load services names using react query
-    const { data: serviceNames, isLoading } = useQuery('service-names', () => fetch('http://localhost:5000/service-names').then(res => res.json()));
+    const { data: serviceNames, isLoading } = useQuery('service-names', () => fetch('https://desolate-cliffs-76740.herokuapp.com/service-names').then(res => res.json()));
 
     const onSubmit = async (data, event) => {
         console.log('data', data);
@@ -21,7 +21,7 @@ const AddDoctor = () => {
             speciality
         };
 
-        fetch('http://localhost:5000/doctor', {
+        fetch('https://desolate-cliffs-76740.herokuapp.com/doctor', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

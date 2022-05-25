@@ -11,7 +11,7 @@ const ManageDoctors = () => {
     const [deletingDoctor, setDeletingDoctor] = useState('');
     const [sureToDelete, setSureToDelete] = useState(false);
 
-    const { data: doctors, isLoading, refetch } = useQuery('doctors', () => fetch('http://localhost:5000/doctors', {
+    const { data: doctors, isLoading, refetch } = useQuery('doctors', () => fetch('https://desolate-cliffs-76740.herokuapp.com/doctors', {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('ACCESS_TOKEN')}`
@@ -28,7 +28,7 @@ const ManageDoctors = () => {
 
     useEffect(() => {
         if (sureToDelete) {
-            fetch(`http://localhost:5000/doctor/${deletingDoctor.email}`, {
+            fetch(`https://desolate-cliffs-76740.herokuapp.com/doctor/${deletingDoctor.email}`, {
                 method: 'DELETE',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('ACCESS_TOKEN')}`
