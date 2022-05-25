@@ -9,8 +9,10 @@ import { toast } from 'react-toastify';
 const BookingModal = ({ selectedService, setSelectedService, date, refetch }) => {
     const [user] = useAuthState(auth);
 
-    const {_id, name, slots} = selectedService;
+    const {_id, name, slots, price} = selectedService;
     const { register, handleSubmit } = useForm();
+    console.log(selectedService);
+    console.log(price);
 
     const appointmentDate = format(date, 'PP');
     const onSubmit = (data, event) => {
@@ -19,6 +21,7 @@ const BookingModal = ({ selectedService, setSelectedService, date, refetch }) =>
         const bookingData = {
             treatmentId: _id,
             treatment: name,
+            price: price,
             appointmentDate,
             slot,
             patient: user.displayName,

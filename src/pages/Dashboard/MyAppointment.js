@@ -45,6 +45,7 @@ const MyAppointment = () => {
                                     <th>Treatment</th>
                                     <th>Appointment</th>
                                     <th>Schedule</th>
+                                    <th>Payment</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,6 +57,11 @@ const MyAppointment = () => {
                                         <td>{booking.treatment}</td>
                                         <td>{booking.appointmentDate}</td>
                                         <td>{booking.slot}</td>
+                                        <td>
+                                            {
+                                                (booking.price) ? <Link to={`payment/${booking._id}`} className='btn btn-info'>Pay</Link> : <span className='text-secondary'>Paid</span>
+                                            }
+                                        </td>
                                     </tr>)
                                 }
                             </tbody>
